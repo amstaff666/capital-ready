@@ -1,4 +1,4 @@
-﻿# CapitalReady
+# CapitalReady
 Premium kliendiportaal ettevõtte laenuvalmiduse juhtimiseks.
 ## Põhiloogika
 - klient loob konto
