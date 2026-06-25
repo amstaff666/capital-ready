@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-import { createRoot } from "react-dom/client";
 import {
   Building2,
   CheckCircle2,
@@ -195,8 +194,7 @@ function Dashboard() {
     </main>
   );
 }
-function App() {
+export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   return loggedIn ? <Dashboard /> : <LoginScreen onLogin={() => setLoggedIn(true)} />;
 }
-createRoot(document.getElementById("root")).render(<App />);
