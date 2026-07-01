@@ -7,7 +7,7 @@ export default function App() {
     <main className="landing">
       <header className="topbar">
         <div className="logo"><span>AI</span><b>AI Money Flow</b></div>
-        <nav><a href="#routes">Eraisik / Ettevõte</a><a href="#start">Alusta</a></nav>
+        <nav><a href="#routes">Eraisik / Ettevõte</a><a href="/start.html">Alusta</a></nav>
       </header>
 
       <section className="hero">
@@ -15,7 +15,7 @@ export default function App() {
           <p className="eyebrow">AI-põhine laenuteekonna otsing</p>
           <h1>Üks “ei” ei lõpeta rahastuse otsimist.</h1>
           <p className="lead">Laenuportaal eraisikule ja ettevõttele. Soovitud summa, sissetulek, kohustused, varad, pangad ja dokumendid pannakse üheks selgeks teekonnaks.</p>
-          <div className="actions"><a className="btn" href="#start">Alusta laenuteekonda</a><a className="btn ghost" href="#routes">Vaata radu</a></div>
+          <div className="actions"><a className="btn" href="/start.html">Alusta laenuteekonda</a><a className="btn ghost" href="#routes">Vaata radu</a></div>
         </div>
         <div className="glass">
           <p className="eyebrow">Näide</p>
@@ -28,8 +28,8 @@ export default function App() {
       <section id="routes" className="section">
         <h2>Kaks selget rada. Üks portaal.</h2>
         <div className="cards">
-          <article><small>isikulaen / kodu / auto</small><h3>Eraisikule</h3><p>Isikuandmed, töökoht, netosissetulek, kohustused, varad, tagatised ja dokumendid.</p></article>
-          <article><small>ettevõtte lisablokk</small><h3>Ettevõttele</h3><p>Sama kontaktisiku baas + ettevõtte nimi, registrikood, KMKR, käive, kasum, pangad ja rahastuse eesmärk.</p></article>
+          <a href="/intake-personal.html"><article><small>isikulaen / kodu / auto</small><h3>Eraisikule</h3><p>Isikuandmed, töökoht, netosissetulek, kohustused, varad, tagatised ja dokumendid.</p></article></a>
+          <a href="/intake-company.html"><article><small>ettevõtte lisablokk</small><h3>Ettevõttele</h3><p>Sama kontaktisiku baas + ettevõtte nimi, registrikood, KMKR, käive, kasum, pangad ja rahastuse eesmärk.</p></article></a>
         </div>
       </section>
 
@@ -41,7 +41,7 @@ export default function App() {
       <section id="start" className="section start">
         <h2>Vali, kellele rahastust otsid.</h2>
         <p>Järgmises kihis liigub klient õigesse vormi: eraisiku intake või ettevõtte lisablokiga intake.</p>
-        <div className="actions"><a className="btn" href="#">Alusta eraisikuna</a><a className="btn ghost" href="#">Alusta ettevõttena</a></div>
+        <div className="actions"><a className="btn" href="/intake-personal.html">Alusta eraisikuna</a><a className="btn ghost" href="/intake-company.html">Alusta ettevõttena</a></div>
       </section>
     </main>
   );
