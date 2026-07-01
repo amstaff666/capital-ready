@@ -1,5 +1,6 @@
 [build]
-  command = "echo Using prebuilt dist"
+  command = "npm run build && mkdir -p dist/assets && cp -r assets/* dist/assets/ && cp -f start.html intake-personal.html intake-company.html submitted.html dashboard.html dist/ 2>/dev/null || true"
   publish = "dist"
+
 [build.environment]
   NODE_VERSION = "20"
