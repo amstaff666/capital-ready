@@ -28,8 +28,8 @@ export default function App() {
       <section id="routes" className="section">
         <h2>Kaks selget rada. Üks portaal.</h2>
         <div className="cards">
-          <a href="/intake-personal.html"><article><small>isikulaen / kodu / auto</small><h3>Eraisikule</h3><p>Isikuandmed, töökoht, netosissetulek, kohustused, varad, tagatised ja dokumendid.</p></article></a>
-          <a href="/intake-company.html"><article><small>ettevõtte lisablokk</small><h3>Ettevõttele</h3><p>Sama kontaktisiku baas + ettevõtte nimi, registrikood, KMKR, käive, kasum, pangad ja rahastuse eesmärk.</p></article></a>
+          <article><small>isikulaen / kodu / auto</small><h3>Eraisikule</h3><p>Isikuandmed, töökoht, netosissetulek, kohustused, varad, tagatised ja dokumendid.</p></article>
+          <article><small>ettevõtte lisablokk</small><h3>Ettevõttele</h3><p>Sama kontaktisiku baas + ettevõtte nimi, registrikood, KMKR, käive, kasum, pangad ja rahastuse eesmärk.</p></article>
         </div>
       </section>
 
@@ -40,7 +40,7 @@ export default function App() {
 
       <section id="start" className="section start">
         <h2>Vali, kellele rahastust otsid.</h2>
-        <p>Järgmises kihis liigub klient õigesse vormi: eraisiku intake või ettevõtte lisablokiga intake.</p>
+        <p>Järgmises sammus liigub klient õigesse vormi: eraisiku laenuteekond või ettevõtte rahastuse teekond.</p>
         <div className="actions"><a className="btn" href="/intake-personal.html">Alusta eraisikuna</a><a className="btn ghost" href="/intake-company.html">Alusta ettevõttena</a></div>
       </section>
     </main>

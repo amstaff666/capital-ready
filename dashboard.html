@@ -1,1 +1,70 @@
-<!doctype html><html><head><meta charset="utf-8"><title>AI Money Flow</title><link rel="stylesheet" href="/assets/styles.css"></head><body><main class="page"><h1>Dashboard</h1><section class="grid2"><div class="panel"><h2>Järgmised tegevused</h2><ul class="list"><li>Lisa puuduv dokument</li><li>Vasta küsimusele</li></ul></div><div class="panel"><h2>Staatus</h2><ul class="list"><li>Andmed vastu võetud</li><li>Ootab kontrolli</li></ul></div></section><a class="btn" href="/start.html">Uus taotlus</a></main></body></html>
+<!doctype html>
+<html lang="et">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Money Flow — kliendi töölaud</title>
+  <meta name="description" content="AI Money Flow kliendi laenuportaal" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="mark">AI</span><span>AI Money Flow<small>Kliendi töölaud</small></span></a>
+      <nav class="navlinks">
+        <a href="index.html">Avaleht</a><a href="start.html">Alusta</a><a href="dashboard.html">Dashboard</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="panel dashboardHero">
+        <div class="hero-content">
+          <div class="status-row">
+            <span class="badge" data-case-type>Ettevõtte taotlus</span>
+            <span class="badge">Haldur kontrollib dokumente</span>
+          </div>
+          <h1 data-case-title>Demo Ettevõte OÜ</h1>
+          <p class="lead">Taotlus summale <b data-case-amount>50 000 €</b>. Klient näeb protsessi seisu, nõutud dokumente, pankade vastuseid ja halduri küsimusi.</p>
+          <p class="small" data-case-detail>Ettevõtte rahastuse case</p>
+          <div class="progress-wrap"><div class="progress-top"><span>Laenuvalmidus</span><span>84%</span></div><div class="bar"><div class="fill"></div></div></div>
+          <div class="hero-stats"><div class="hero-stat"><b data-case-amount>50 000 €</b><span>soovitud laenusumma</span></div><div class="hero-stat"><b>12 kuud</b><span>väljavõtete kontroll</span></div><div class="hero-stat"><b>3 tegevust</b><span>kliendilt veel vaja</span></div></div>
+        </div>
+      </section>
+      <div class="dashboardGrid" style="margin-top:18px">
+        <div>
+          <section class="panel"><div class="sectionHead"><h2>Järgmised tegevused</h2><p>Kliendile nähtav</p></div>
+            <div class="task"><div class="dot warn"></div><div><b>Lisa Swedbanki 12 kuu väljavõte</b><p>Periood viimased 12 kuud. Sobib PDF, CSV või XLSX.</p></div><span class="right warn">Vajalik</span></div>
+            <div class="task"><div class="dot warn"></div><div><b>Lisa jooksva aasta bilanss</b><p>Ettevõtte taotluse puhul lisa värske bilanss või finantsülevaade.</p></div><span class="right warn">Vajalik</span></div>
+            <div class="task"><div class="dot info"></div><div><b>Vasta halduri küsimusele</b><p data-dynamic-task>Palun täpsusta laenu eesmärk ja kasutusplaan.</p></div><span class="right info">Ootel</span></div>
+            <div class="task"><div class="dot ok"></div><div><b>Esialgne info loetud</b><p>Taotluse põhiandmed on üle vaadatud. Järgmine samm sõltub dokumentidest.</p></div><span class="right ok">Korras</span></div>
+          </section>
+          <section class="panel" style="margin-top:18px"><div class="sectionHead"><h2>Pankade staatus</h2><p>Avalik kliendivaade</p></div>
+            <div class="bankStatus">
+              <div class="bank"><div class="bank-head"><div><div class="bank-name">LHV Pank</div><div class="bank-meta">Taotlus saadetud</div></div><span class="mini-status s-sent">Ülevaatamisel</span></div><div class="small">Pangapakett on kontrollis.</div></div>
+              <div class="bank"><div class="bank-head"><div><div class="bank-name">Swedbank</div><div class="bank-meta">Pank küsis lisa</div></div><span class="mini-status s-wait">Lisa vaja</span></div><div class="small">Vajalik: 12 kuu väljavõte.</div></div>
+              <div class="bank"><div class="bank-head"><div><div class="bank-name">Coop Pank</div><div class="bank-meta">Esialgne positiivne indikatsioon</div></div><span class="mini-status s-ok">Positiivne</span></div><div class="small">Detailid kinnitab haldur.</div></div>
+              <div class="bank"><div class="bank-head"><div><div class="bank-name">SEB</div><div class="bank-meta">Ei ole veel saadetud</div></div><span class="mini-status s-no">Ootel</span></div><div class="small">Ootab bilansi lisamist.</div></div>
+              <div class="bank"><div class="bank-head"><div><div class="bank-name">Luminor</div><div class="bank-meta">Eelkontroll</div></div><span class="mini-status s-no">Ootel</span></div><div class="small">Sobivus sõltub dokumentidest.</div></div>
+              <div class="bank"><div class="bank-head"><div><div class="bank-name">Citadele</div><div class="bank-meta">Eelkontroll</div></div><span class="mini-status s-no">Ootel</span></div><div class="small">Saadetakse vajadusel järgmises ringis.</div></div>
+            </div>
+          </section>
+        </div>
+        <div>
+          <section class="panel"><div class="sectionHead"><h2>Dokumendid</h2><p>Sisu ei kuvata</p></div>
+            <div class="doc-row"><div><div class="doc-name">Kasumiaruanne / sissetuleku tõend</div><div class="doc-detail">Loetud halduri poolt</div></div><span class="right ok">Korras</span></div>
+            <div class="doc-row"><div><div class="doc-name">Bilanss / finantsülevaade</div><div class="doc-detail">Puudub · klient peab lisama</div></div><span class="right warn">Puudu</span></div>
+            <div class="doc-row"><div><div class="doc-name">LHV 12 kuu väljavõte</div><div class="doc-detail">Kontrollis</div></div><span class="right info">Kontrollis</span></div>
+            <div class="doc-row"><div><div class="doc-name">Swedbank 12 kuu väljavõte</div><div class="doc-detail">Puudub · pank küsis juurde</div></div><span class="right warn">Vajalik</span></div>
+          </section>
+          <section class="panel" style="margin-top:18px"><div class="sectionHead"><h2>AI abiline</h2><p>Soovitused kliendile</p></div><div class="ai-box"><b>Taotluse tugevdamiseks:</b><ul><li>Lisa 12 kuu põhipanga väljavõte.</li><li>Lisa bilanss või kinnitatud sissetuleku info.</li><li>Selgita suuremad laekumiste kõikumised.</li><li>Lisa üks suurem leping või korduva tulu tõend.</li></ul></div></section>
+          <section class="panel" style="margin-top:18px"><div class="sectionHead"><h2>Vestlus halduriga</h2><p>Kliendile nähtav</p></div><div class="chat"><div class="msg manager"><b>Haldur:</b><br>Palun lisa Swedbanki 12 kuu väljavõte ja värske bilanss või finantsülevaade.</div><div class="msg client"><b>Klient:</b><br>Saan lisada bilansi täna õhtul. Väljavõtte küsin raamatupidajalt.</div><div class="msg manager"><b>Haldur:</b><br>Sobib. Kui failid lisatud, liigub taotlus järgmisse kontrolli.</div></div></section>
+        </div>
+      </div>
+      <nav class="bottom-nav"><button class="active">Ülevaade</button><button>Dokumendid</button><button>Pangad</button><button>Vestlus</button></nav>
+    </main>
+
+    <footer class="footer">AI Money Flow — kliendi laenuportaal.</footer>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

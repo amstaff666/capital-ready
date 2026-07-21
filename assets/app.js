@@ -1,1 +1,72 @@
-function qs(s,r=document){return r.querySelector(s)}function qsa(s,r=document){return Array.from(r.querySelectorAll(s))}function safeValue(form,name){const el=form.elements[name];if(!el)return'';if(el.type==='file')return el.files&&el.files.length?el.files[0].name:'';if(el.type==='checkbox')return el.checked?'yes':'';return el.value||''}function collectCase(form){const type=form.dataset.type||safeValue(form,'applicationType')||'personal';const bankNames=['swedbank','seb','lhv','coop','luminor','citadele'];return{applicationType:type,firstName:safeValue(form,'firstName'),lastName:safeValue(form,'lastName'),companyName:safeValue(form,'companyName'),loanAmount:safeValue(form,'loanAmount'),loanPurpose:safeValue(form,'loanPurpose')||safeValue(form,'companyLoanPurpose'),submittedAt:new Date().toISOString(),banks:bankNames.map(name=>({name,account:!!form.elements[name+'Account']?.checked,iban:safeValue(form,name+'Iban'),statement:safeValue(form,name+'Statement')}))}}function setupForm(){const form=qs('#applicationForm');if(!form)return;qsa('[data-jump]').forEach(btn=>btn.addEventListener('click',()=>{const target=document.getElementById(btn.dataset.jump);if(target)target.scrollIntoView({behavior:'smooth',block:'start'});qsa('.sideNav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}));form.addEventListener('submit',async event=>{event.preventDefault();const errorBox=qs('#formError');if(errorBox){errorBox.textContent='';errorBox.classList.remove('show')}if(!form.reportValidity()){if(errorBox){errorBox.textContent='Täida enne kohustuslikud väljad ja kinnita nõusolek.';errorBox.classList.add('show')}return}const data=collectCase(form);localStorage.setItem('aimoneyflowCase',JSON.stringify(data));const body=new FormData(form);if(!body.get('form-name'))body.set('form-name',form.getAttribute('name')||'aimoneyflow-intake');const submitButton=form.querySelector('button[type="submit"]');if(submitButton){submitButton.disabled=true;submitButton.textContent='Edastan...'}try{if(location.protocol!=='file:'){const response=await fetch('/',{method:'POST',body});if(!response.ok)throw new Error('submit failed')}window.location.href='/submitted.html?type='+encodeURIComponent(data.applicationType)}catch(err){if(errorBox){errorBox.textContent='Edastamine ei õnnestunud. Proovi uuesti või võta halduriga ühendust.';errorBox.classList.add('show')}if(submitButton){submitButton.disabled=false;submitButton.textContent='Edasta haldurile'}}})}function getCase(){try{return JSON.parse(localStorage.getItem('aimoneyflowCase')||'{}')}catch(e){return{}}}function setupSubmitted(){const box=qs('[data-submitted-summary]');if(!box)return;const data=getCase();const type=data.applicationType==='company'?'Ettevõtte taotlus':'Eraisiku taotlus';const name=data.applicationType==='company'?(data.companyName||'Ettevõte'):([data.firstName,data.lastName].filter(Boolean).join(' ')||'Klient');box.innerHTML='<strong>'+type+'</strong><span>'+name+'</span><span>'+(data.loanAmount||'Summa täpsustamisel')+'</span>'}function setupDashboard(){const data=getCase();const isCompany=data.applicationType==='company';const title=qs('[data-case-title]');const type=qs('[data-case-type]');const task=qs('[data-dynamic-task]');const name=isCompany?(data.companyName||'Demo Ettevõte OÜ'):([data.firstName,data.lastName].filter(Boolean).join(' ')||'Demo Klient');if(title)title.textContent=name;qsa('[data-case-amount]').forEach(el=>el.textContent=data.loanAmount||'50 000 €');if(type)type.textContent=isCompany?'Ettevõtte taotlus':'Eraisiku taotlus';if(task&&data.loanPurpose)task.textContent='Eesmärk: '+data.loanPurpose;if(!isCompany){qsa('[data-company-only-label]').forEach(el=>el.textContent='Lisa sissetuleku tõend');qsa('[data-company-only-detail]').forEach(el=>el.textContent='Palgatõend või konto väljavõte on puudu.')}}document.addEventListener('DOMContentLoaded',()=>{setupForm();setupSubmitted();setupDashboard()});
+
+function qs(sel, root=document){ return root.querySelector(sel); }
+function qsa(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
+function setActiveButton(button){
+  qsa('.sideNav button').forEach(b => b.classList.remove('active'));
+  if(button) button.classList.add('active');
+}
+function jumpToSection(id, button){
+  const target = document.getElementById(id);
+  if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  setActiveButton(button);
+}
+function collectCase(form){
+  // The public frontend is a demo until the authenticated API and private
+  // document storage are connected. Never persist form PII or filenames.
+  return {
+    applicationType: form.dataset.type === 'company' ? 'company' : 'personal',
+    demo: true,
+    submittedAt: new Date().toISOString()
+  };
+}
+function setupApplicationForm(){
+  const form = qs('#applicationForm');
+  if(!form) return;
+  qsa('[data-jump]').forEach(btn => btn.addEventListener('click', () => jumpToSection(btn.dataset.jump, btn)));
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const errorBox = qs('#formError');
+    if(!form.reportValidity()){
+      if(errorBox){ errorBox.textContent = 'Täida enne kohustuslikud väljad ja kinnita nõusolek.'; errorBox.classList.add('show'); }
+      return;
+    }
+    const data = collectCase(form);
+    localStorage.setItem('aimoneyflowCase', JSON.stringify(data));
+    window.location.href = 'submitted.html?type=' + encodeURIComponent(data.applicationType);
+  });
+}
+function getCase(){
+  try { return JSON.parse(localStorage.getItem('aimoneyflowCase') || '{}'); }
+  catch(e){ return {}; }
+}
+function setupSubmitted(){
+  const box = qs('[data-submitted-summary]');
+  if(!box) return;
+  const data = getCase();
+  const type = data.applicationType === 'company' ? 'Ettevõtte taotlus' : 'Eraisiku taotlus';
+  box.innerHTML = `<strong>${type}</strong><span>Demo — andmeid ei edastatud</span><span>Turvaline API on ühendamata</span>`;
+}
+function setupDashboard(){
+  const data = getCase();
+  const title = qs('[data-case-title]');
+  const amount = qs('[data-case-amount]');
+  const type = qs('[data-case-type]');
+  const task = qs('[data-dynamic-task]');
+  if(title) title.textContent = data.applicationType === 'company' ? 'Demo Ettevõte OÜ' : 'Demo Klient';
+  if(amount) amount.textContent = '50 000 €';
+  if(type) type.textContent = data.applicationType === 'company' ? 'Ettevõtte taotlus' : 'Eraisiku taotlus';
+  if(task) task.textContent = 'Demo: ühenda turvaline API enne pärisandmete vastuvõttu.';
+  const detail = qs('[data-case-detail]');
+  if(detail){
+    detail.textContent = data.applicationType === 'company' ? 'Ettevõtte rahastuse democase' : 'Eraisiku laenuteekonna democase';
+  }
+  qsa('.bottom-nav button').forEach(btn => btn.addEventListener('click', () => {
+    qsa('.bottom-nav button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }));
+}
+document.addEventListener('DOMContentLoaded', () => {
+  setupApplicationForm();
+  setupSubmitted();
+  setupDashboard();
+});

@@ -1,6 +1,18 @@
-node_modules
-dist
-.netlify
-.env
-.env.local
+node_modules/
+dist/
+.netlify/
+.vercel/
+.env*
+!.env.example
 .DS_Store
+
+# Confidential client material must never enter source control.
+Kliendibaas/
+client-data/
+*.pdf
+*.csv
+*.xls
+*.xlsx
+*.doc
+*.docx
+*.zip
