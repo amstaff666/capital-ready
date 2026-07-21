@@ -1,6 +1,14 @@
 [build]
-  command = "npm run build && mkdir -p dist/assets && cp -r assets/* dist/assets/ && cp -f start.html intake-personal.html intake-company.html submitted.html dashboard.html dist/ 2>/dev/null || true"
+  command = "npm run build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-Frame-Options = "DENY"

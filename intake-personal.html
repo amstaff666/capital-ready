@@ -1,1 +1,103 @@
-<!doctype html><html lang="et"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Money Flow - eraisik</title><link rel="stylesheet" href="/assets/styles.css"></head><body><main class="page"><p class="eyebrow">Eralaenu taotlus</p><h1>Eraisiku andmed</h1><p class="lead">Täida kontakt, summa, pangad ja dokumendid.</p><form id="applicationForm" data-type="personal" name="aimoneyflow-personal-intake" method="POST" action="/submitted.html" data-netlify="true" enctype="multipart/form-data"><input type="hidden" name="form-name" value="aimoneyflow-personal-intake"><input type="hidden" name="applicationType" value="personal"><div class="panel formGrid"><label>Eesnimi *<input required name="firstName"></label><label>Perenimi *<input required name="lastName"></label><label>E-post *<input required type="email" name="email"></label><label>Telefon *<input required name="phone"></label><label>Soovitud summa *<input required name="loanAmount"></label><label>Netosissetulek<input name="netIncome"></label><label class="wide">Laenu eesmärk *<textarea required name="loanPurpose"></textarea></label></div><section class="panel"><h2>6 panga kontroll</h2><div class="bankGrid"><label class="bankBox">Swedbank<input name="swedbankIban" placeholder="IBAN"><input type="file" name="swedbankStatement"></label><label class="bankBox">SEB<input name="sebIban" placeholder="IBAN"><input type="file" name="sebStatement"></label><label class="bankBox">LHV<input name="lhvIban" placeholder="IBAN"><input type="file" name="lhvStatement"></label><label class="bankBox">Coop<input name="coopIban" placeholder="IBAN"><input type="file" name="coopStatement"></label><label class="bankBox">Luminor<input name="luminorIban" placeholder="IBAN"><input type="file" name="luminorStatement"></label><label class="bankBox">Citadele<input name="citadeleIban" placeholder="IBAN"><input type="file" name="citadeleStatement"></label></div></section><section class="panel"><label class="check"><input required type="checkbox" name="consent" value="yes"> Kinnitan andmete edastamise.</label><div id="formError" class="error"></div><div class="submitRow"><a class="btn ghost" href="/start.html">Tagasi</a><button class="btn" type="submit">Edasta haldurile</button></div></section></form></main><script src="/assets/app.js"></script></body></html>
+<!doctype html>
+<html lang="et">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Money Flow — Eralaenu taotlus</title>
+  <meta name="description" content="AI Money Flow kliendi laenuportaal" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="mark">AI</span><span>AI Money Flow<small>Eraisiku taotlus</small></span></a>
+      <nav class="navlinks">
+        <a href="index.html">Avaleht</a><a href="start.html">Alusta</a><a href="dashboard.html">Dashboard</a>
+      </nav>
+    </header>
+
+    <main class="app">
+      <aside class="sidebar">
+        <div class="sideTitle"><span class="mark">AI</span><div><strong>Eralaenu taotlus</strong><div style="color:var(--muted)">Eraisiku taotlus</div></div></div>
+        <nav class="sideNav">
+          <button type="button" class="active" data-jump="overview">📊 Ülevaade</button>
+          <button type="button" data-jump="person">👤 Isikuandmed</button>
+          
+          <button type="button" data-jump="money">💶 Laen & sissetulek</button>
+          <button type="button" data-jump="banks">🏦 Pangad</button>
+          <button type="button" data-jump="docs">📄 Dokumendid</button>
+        </nav>
+      </aside>
+      <section class="content">
+        <header class="topline">
+          <div><p class="eyebrow">Eraisiku taotlus</p><h1>Eralaenu taotlus</h1><p style="color:var(--muted)">Täida sisend, lisa pangad ja dokumendid ning edasta haldurile.</p></div>
+          <button class="btn" type="submit" form="applicationForm">Vaata demo tulemust</button>
+        </header>
+        <section id="overview" class="summary">
+          <div class="card gold"><span>Taotluse tüüp</span><strong>Eraisik</strong><p>Ettevõtte lisablokk on siin peidetud.</p></div>
+          <div class="card"><span>Vastuvõtt</span><strong>Portaal</strong><p>Andmed liiguvad pärast kinnitamist kliendi dashboardi.</p></div>
+          <div class="card"><span>Kontroll</span><strong>AI vaade</strong><p>Puuduvad väljad, dokumendid ja panga loogika.</p></div>
+        </section>
+        <form id="applicationForm" class="form" data-type="personal">
+          <input type="hidden" name="applicationType" value="personal">
+          <p class="hidden"><label>Ära täida seda välja <input name="bot-field"></label></p>
+          <section id="person" class="panel formPanel">
+            <div class="panelHeader"><div><p class="eyebrow">1. Klient</p><h2>Isiku- ja kontaktandmed</h2></div><span class="pill">kohustuslik</span></div>
+            <div class="formGrid">
+              <label>Eesnimi *<input required name="firstName" autocomplete="given-name"></label>
+              <label>Perenimi *<input required name="lastName" autocomplete="family-name"></label>
+              <label>Isikukood *<input required name="personalCode" maxlength="11"></label>
+              <label>Telefon *<input required name="phone" autocomplete="tel"></label>
+              <label>E-post *<input required type="email" name="email" autocomplete="email"></label>
+              <label>Perekonnaseis<select name="maritalStatus"><option value="">Vali...</option><option>Vallaline</option><option>Abielus</option><option>Vabaabielus</option><option>Lahutatud</option></select></label>
+              <label>Ülalpeetavaid<input type="number" name="dependents" min="0" value="0"></label>
+              <label>Kodakondsus<input name="citizenship" value="Eesti"></label>
+              <label>Elukoha riik<input name="residenceCountry" value="Eesti"></label>
+              <label class="wide">Aadress<input name="address" autocomplete="street-address"></label>
+            </div>
+          </section>
+          
+          <section id="money" class="panel formPanel">
+            <div class="panelHeader"><div><p class="eyebrow">2. Laen ja finantsseis</p><h2>Soovitud laen, sissetulek ja kohustused</h2></div></div>
+            <div class="formGrid">
+              <label>Laenu liik *<select required name="loanProduct"><option value="">Vali...</option><option>Kodulaen</option><option>Väikelaen</option><option>Autolaen / liising</option><option>Refinantseerimine</option><option>Ettevõtte laen</option><option>Käibekapital</option></select></label>
+              <label>Soovitud summa *<input required name="loanAmount" placeholder="50 000 €"></label>
+              <label>Tähtaeg<input name="loanTerm" placeholder="24 kuud / 10 aastat"></label>
+              <label>Netosissetulek kuus<input name="netIncome" placeholder="2 200 €"></label>
+              <label>Tööandja / tegevus<input name="employer"></label>
+              <label>Töösuhte liik<select name="employmentType"><option>Tähtajatu tööleping</option><option>Tähtajaline tööleping</option><option>FIE</option><option>OÜ kaudu</option><option>Juhatuse liikme tasu</option><option>Muu</option></select></label>
+              <label>Olemasolevad laenumaksed kuus<input name="existingLoanPayments" placeholder="450 €"></label>
+              <label>Olemasolevad kohustused<textarea name="existingLoans" placeholder="Pank/laenuandja, jääk, kuumakse"></textarea></label>
+              <label>Varad / tagatised<textarea name="assets" placeholder="Kinnisvara, auto, hoiused"></textarea></label>
+              <label class="wide">Laenu kasutamise eesmärk *<textarea required name="loanPurpose"></textarea></label>
+            </div>
+          </section>
+          <section id="banks" class="panel formPanel">
+            <div class="panelHeader"><div><p class="eyebrow">3. Pangad</p><h2>Pangakontod ja väljavõtted</h2></div><span class="pill">6 panga kontroll</span></div>
+            <div class="bankGrid">
+              <div class="bankBox"><strong>Swedbank</strong><label class="check"><input type="checkbox" name="swedbankAccount"> konto olemas</label><input name="swedbankIban" placeholder="IBAN"><label>Väljavõte<input type="file" name="swedbankStatement"></label></div><div class="bankBox"><strong>SEB</strong><label class="check"><input type="checkbox" name="sebAccount"> konto olemas</label><input name="sebIban" placeholder="IBAN"><label>Väljavõte<input type="file" name="sebStatement"></label></div><div class="bankBox"><strong>LHV</strong><label class="check"><input type="checkbox" name="lhvAccount"> konto olemas</label><input name="lhvIban" placeholder="IBAN"><label>Väljavõte<input type="file" name="lhvStatement"></label></div><div class="bankBox"><strong>Coop</strong><label class="check"><input type="checkbox" name="coopAccount"> konto olemas</label><input name="coopIban" placeholder="IBAN"><label>Väljavõte<input type="file" name="coopStatement"></label></div><div class="bankBox"><strong>Luminor</strong><label class="check"><input type="checkbox" name="luminorAccount"> konto olemas</label><input name="luminorIban" placeholder="IBAN"><label>Väljavõte<input type="file" name="luminorStatement"></label></div><div class="bankBox"><strong>Citadele</strong><label class="check"><input type="checkbox" name="citadeleAccount"> konto olemas</label><input name="citadeleIban" placeholder="IBAN"><label>Väljavõte<input type="file" name="citadeleStatement"></label></div>
+            </div>
+          </section>
+          <section id="docs" class="panel formPanel">
+            <div class="panelHeader"><div><p class="eyebrow">4. Dokumendid</p><h2>Failid haldurile</h2></div><span class="pill blue">Dokumendid</span></div>
+            <div class="notice">Demo: sisestatud andmeid ja valitud faile ei edastata ega salvestata. Päris vastuvõtt avatakse pärast turvalise API ja privaatse failimajutuse ühendamist.</div>
+            <div class="formGrid two">
+              <label>Isikut tõendav dokument<input type="file" name="idDocument"></label>
+              <label>Palgatõend / sissetuleku tõend<input type="file" name="incomeProof"></label>
+              <label>Bilanss / finantsülevaade<input type="file" name="balanceOrFinancials"></label>
+              <label>Lisafail<input type="file" name="extraFile"></label>
+              <label class="wide">Lisainfo haldurile<textarea name="notes"></textarea></label>
+            </div>
+            <label class="check" style="margin-top:18px"><input required type="checkbox" name="consent" value="yes"> Kinnitan, et esitatud andmed on õiged ja annan loa neid laenuvalmiduse hindamiseks töödelda.</label>
+            <div id="formError" class="errorBox"></div>
+            <div class="submitRow"><a class="btn ghost" href="start.html">Tagasi valikusse</a><button class="btn" type="submit">Vaata demo tulemust</button></div>
+          </section>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">AI Money Flow — kliendi laenuportaal.</footer>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
