@@ -1,0 +1,12 @@
+{
+  "market":"EE",
+  "version":"2026-09-19-draft",
+  "status":"product-rules-review-required",
+  "currency":"EUR",
+  "requiredFields":["firstName","lastName","personalCode","phone","email","loanProduct","loanAmount","loanPurpose","consent"],
+  "companyRequiredFields":["companyName","companyRegCode"],
+  "documentTypes":["idDocument","incomeProof","bankStatement","annualReport","balanceOrFinancials","contractsOrInvoices"],
+  "validation":{"personalCode":{"label":"Isikukood","mode":"server"},"companyRegCode":{"label":"Registrikood","mode":"server"}},
+  "policy":{"storeRawFilesInDatabase":false,"privateObjectStorageRequired":true,"humanReviewRequired":true},
+  "notes":["Reeglifail on tehniline konfiguratsioon, mitte õigusnõuanne.","Tootmises aktiveerimiseks tuleb krediidi-, KYC/AML- ja privaatsusreeglid üle vaadata."]
+}
