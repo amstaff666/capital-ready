@@ -20,9 +20,18 @@ export async function handler(event) {
   const envName = MARKET_ENV[market];
   const baseUrl = envName && process.env[envName];
   if (!baseUrl) return json(503,{error:"market_backend_not_configured",market});
-  if (!payload.caseId || !payload.filename || !payload.contentType) return json(400,{error:"missing_upload_metadata"});
+  if (!payload.caseId) return json(400,{error:"missing_case_id"});
 
-  const upstream = await fetch(new URL(`/v1/cases/${encodeURIComponent(payload.caseId)}/uploads`, baseUrl), {
+  let path;
+  if (payload.action === "complete") {
+    if (!payload.documentId) return json(400,{error:"missing_document_id"});
+    path = `/v1/cases/${encodeURIComponent(payload.caseId)}/uploads/${encodeURIComponent(payload.documentId)}/complete`;
+  } else {
+    if (!payload.filename || !payload.contentType) return json(400,{error:"missing_upload_metadata"});
+    path = `/v1/cases/${encodeURIComponent(payload.caseId)}/uploads`;
+  }
+
+  const upstream = await fetch(new URL(path, baseUrl), {
     method:"POST",
     headers:{"content-type":"application/json","x-annator-market":market},
     body:JSON.stringify(payload)
