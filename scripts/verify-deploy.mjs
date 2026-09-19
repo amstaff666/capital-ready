@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 
 const dist = path.resolve('dist');
-const required = ['index.html', 'start.html', 'intake-personal.html', 'intake-company.html', 'submitted.html', 'dashboard.html', 'assets/app.js', 'assets/styles.css'];
+const required = ['index.html', 'start.html', 'intake-personal.html', 'intake-company.html', 'submitted.html', 'dashboard.html', 'assets/app.js', 'assets/styles.css', 'markets/ee.html', 'markets/fi.html', 'markets/pl.html', 'rules/EE.json', 'rules/FI.json', 'rules/PL.json', 'config/markets.json'];
 const forbidden = /(?:^|\/)(?:Kliendibaas|client-data)(?:\/|$)|\.(?:pdf|csv|xlsx?|docx?|zip)$/i;
 
 async function walk(directory, prefix = '') {

@@ -1,0 +1,12 @@
+{
+  "market":"FI",
+  "version":"2026-09-19-draft",
+  "status":"product-rules-review-required",
+  "currency":"EUR",
+  "requiredFields":["firstName","lastName","personalCode","phone","email","loanProduct","loanAmount","loanPurpose","consent"],
+  "companyRequiredFields":["companyName","companyRegCode"],
+  "documentTypes":["idDocument","incomeProof","bankStatement","annualReport","balanceOrFinancials","contractsOrInvoices"],
+  "validation":{"personalCode":{"label":"Henkilötunnus","mode":"server"},"companyRegCode":{"label":"Y-tunnus","mode":"server"}},
+  "policy":{"storeRawFilesInDatabase":false,"privateObjectStorageRequired":true,"humanReviewRequired":true},
+  "notes":["Soome kasutab oma välju ja valideerimist.","Õigus- ja krediidireeglid tuleb enne tootmisaktiveerimist kinnitada."]
+}

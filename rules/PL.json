@@ -1,0 +1,12 @@
+{
+  "market":"PL",
+  "version":"2026-09-19-draft",
+  "status":"product-rules-review-required",
+  "currency":"PLN",
+  "requiredFields":["firstName","lastName","personalCode","phone","email","loanProduct","loanAmount","loanPurpose","consent"],
+  "companyRequiredFields":["companyName","companyRegCode"],
+  "documentTypes":["idDocument","incomeProof","bankStatement","annualReport","balanceOrFinancials","contractsOrInvoices"],
+  "validation":{"personalCode":{"label":"PESEL / identyfikator","mode":"server"},"companyRegCode":{"label":"NIP / KRS / REGON","mode":"server"}},
+  "policy":{"storeRawFilesInDatabase":false,"privateObjectStorageRequired":true,"humanReviewRequired":true},
+  "notes":["Poola turu andmed hoitakse eraldi Poola andmebaasis.","Poola krediidi-, tarbijakaitse-, KYC/AML- ja privaatsusreeglid tuleb enne tootmisaktiveerimist kinnitada."]
+}

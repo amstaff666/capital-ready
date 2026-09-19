@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "markets": [
+    {"code":"EE","name":"Eesti","language":"et","currency":"EUR","route":"/markets/ee.html","enabled":true,"rules":"rules/EE.json","backendEnv":"BACKEND_API_EE","databaseEnv":"DATABASE_URL_EE"},
+    {"code":"FI","name":"Soome","language":"fi","currency":"EUR","route":"/markets/fi.html","enabled":true,"rules":"rules/FI.json","backendEnv":"BACKEND_API_FI","databaseEnv":"DATABASE_URL_FI"},
+    {"code":"PL","name":"Poola","language":"pl","currency":"PLN","route":"/markets/pl.html","enabled":true,"rules":"rules/PL.json","backendEnv":"BACKEND_API_PL","databaseEnv":"DATABASE_URL_PL"},
+    {"code":"ZA","name":"Lõuna-Aafrika Vabariik","language":"en","currency":"ZAR","route":"/markets/za.html","enabled":false,"rules":"rules/ZA.json","backendEnv":"BACKEND_API_ZA","databaseEnv":"DATABASE_URL_ZA"},
+    {"code":"KE","name":"Keenia","language":"en","currency":"KES","route":"/markets/ke.html","enabled":false,"rules":"rules/KE.json","backendEnv":"BACKEND_API_KE","databaseEnv":"DATABASE_URL_KE"}
+  ]
+}
