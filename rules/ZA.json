@@ -1,0 +1,11 @@
+{
+  "market":"ZA",
+  "version":"2026-09-19-draft",
+  "status":"disabled-not-reviewed",
+  "currency":"ZAR",
+  "requiredFields":["firstName","lastName","personalCode","phone","email","loanAmount","loanPurpose","consent"],
+  "companyRequiredFields":["companyName","companyRegCode"],
+  "documentTypes":["idDocument","incomeProof","bankStatement","companyFinancials"],
+  "policy":{"storeRawFilesInDatabase":false,"privateObjectStorageRequired":true,"humanReviewRequired":true},
+  "notes":["Aafrika piloot: tootmises keelatud kuni kohalikud õigus- ja krediidireeglid on kinnitatud."]
+}
