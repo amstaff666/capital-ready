@@ -30,8 +30,8 @@
       </aside>
       <section class="content">
         <header class="topline">
-          <div><p class="eyebrow">Eraisiku taotlus</p><h1>Eralaenu taotlus</h1><p style="color:var(--muted)">Täida sisend, lisa pangad ja dokumendid ning edasta haldurile.</p></div>
-          <button class="btn" type="submit" form="applicationForm">Vaata demo tulemust</button>
+          <div><p class="eyebrow">Eraisiku taotlus · <span data-market-label>riik</span></p><h1>Eralaenu taotlus</h1><p style="color:var(--muted)">Täida sisend, lisa pangad ja dokumendid ning edasta haldurile.</p></div>
+          <button class="btn" type="submit" form="applicationForm">Esita taotlus</button>
         </header>
         <section id="overview" class="summary">
           <div class="card gold"><span>Taotluse tüüp</span><strong>Eraisik</strong><p>Ettevõtte lisablokk on siin peidetud.</p></div>
@@ -80,7 +80,7 @@
           </section>
           <section id="docs" class="panel formPanel">
             <div class="panelHeader"><div><p class="eyebrow">4. Dokumendid</p><h2>Failid haldurile</h2></div><span class="pill blue">Dokumendid</span></div>
-            <div class="notice">Demo: sisestatud andmeid ja valitud faile ei edastata ega salvestata. Päris vastuvõtt avatakse pärast turvalise API ja privaatse failimajutuse ühendamist.</div>
+            <div class="notice">Andmed saadetakse ainult valitud riigi turvalisse backend'i. Failid laaditakse signed-uploadiga selle riigi privaatsesse failisalvestusse; faili sisu ei salvestata Neoni andmebaasi.</div>
             <div class="formGrid two">
               <label>Isikut tõendav dokument<input type="file" name="idDocument"></label>
               <label>Palgatõend / sissetuleku tõend<input type="file" name="incomeProof"></label>
@@ -90,7 +90,7 @@
             </div>
             <label class="check" style="margin-top:18px"><input required type="checkbox" name="consent" value="yes"> Kinnitan, et esitatud andmed on õiged ja annan loa neid laenuvalmiduse hindamiseks töödelda.</label>
             <div id="formError" class="errorBox"></div>
-            <div class="submitRow"><a class="btn ghost" href="start.html">Tagasi valikusse</a><button class="btn" type="submit">Vaata demo tulemust</button></div>
+            <div class="submitRow"><a class="btn ghost" href="start.html">Tagasi valikusse</a><button class="btn" type="submit">Esita taotlus</button></div>
           </section>
         </form>
       </section>
